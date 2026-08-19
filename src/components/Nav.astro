@@ -1,0 +1,17 @@
+---
+import { ui } from '../i18n/ui';
+---
+
+<header class="border-b border-line">
+  <div class="mx-auto flex max-w-5xl items-center justify-between gap-6 px-5 py-4">
+    <a href={ui.paths.home} class="group flex items-baseline gap-2 no-underline">
+      <span class="font-medium tracking-tight text-ink">{ui.brand}</span>
+      <span class="font-mono text-xs tracking-widest text-muted uppercase">{ui.tagline}</span>
+    </a>
+    <nav class="flex items-center gap-5 text-sm text-muted">
+      <a href={ui.paths.services} class="hover:text-ink">{ui.nav.services}</a>
+      <a href={ui.paths.docs} class="hover:text-ink">{ui.nav.docs}</a>
+      <a href={ui.paths.contact} class="hover:text-ink">{ui.nav.contact}</a>
+    </nav>
+  </div>
+</header>

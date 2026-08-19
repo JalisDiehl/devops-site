@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { ui } from '../../i18n/ui';
+
+const docs = (await getCollection('docs')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout title={`${ui.nav.docs} · ${ui.brand}`} description={ui.docs.lead}>
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-5xl px-5 py-16">
+      <p class="font-mono text-xs tracking-[0.2em] text-accent uppercase">{ui.docs.kicker}</p>
+      <h1 class="mt-3 text-4xl font-semibold tracking-tight text-ink">{ui.docs.title}</h1>
+      <p class="mt-4 max-w-2xl text-lg text-muted">{ui.docs.lead}</p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-5 py-12">
+    <ol class="divide-y divide-line border border-line">
+      {
+        docs.map((doc, i) => (
+          <li>
+            <a href={`${ui.paths.docs}/${doc.id}`} class="flex items-baseline gap-6 px-5 py-5 hover:bg-surface">
+              <span class="font-mono text-xs text-muted">{String(i + 1).padStart(2, '0')}</span>
+              <span>
+                <span class="block font-medium text-ink">{doc.data.title}</span>
+                <span class="mt-1 block text-sm text-muted">{doc.data.description}</span>
+              </span>
+              <span class="ml-auto shrink-0 font-mono text-xs text-accent">{ui.docs.read}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</Layout>

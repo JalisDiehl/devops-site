@@ -1,0 +1,56 @@
+---
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import Layout from '../layouts/Layout.astro';
+import { homeOfferings, ui } from '../i18n/ui';
+---
+
+<Layout title={`${ui.brand} · ${ui.tagline}`} description={ui.hero.lead}>
+  <Hero
+    kicker={ui.hero.kicker}
+    title={ui.hero.title}
+    lead={ui.hero.lead}
+    primaryHref={ui.paths.services}
+    primaryLabel={ui.hero.primary}
+    secondaryHref={ui.paths.docs}
+    secondaryLabel={ui.hero.secondary}
+  />
+
+  <section class="mx-auto max-w-5xl px-5 py-16">
+    <p class="font-mono text-xs tracking-[0.2em] text-accent uppercase">{ui.home.offeringTitle}</p>
+    <h2 class="mt-3 max-w-2xl text-2xl font-semibold tracking-tight text-ink">{ui.home.offeringLead}</h2>
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {homeOfferings.map((item) => <ServiceCard title={item.title} body={item.body} />)}
+    </div>
+  </section>
+
+  <section class="border-t border-line">
+    <div class="mx-auto max-w-5xl px-5 py-16">
+      <p class="font-mono text-xs tracking-[0.2em] text-accent uppercase">{ui.home.workTitle}</p>
+      <ol class="mt-8 grid gap-8 sm:grid-cols-3">
+        {
+          ui.home.work.map((item, i) => (
+            <li>
+              <span class="font-mono text-xs text-muted">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="mt-2 text-lg font-medium tracking-tight text-ink">{item.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-muted">{item.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="border-t border-line bg-surface">
+    <div class="mx-auto max-w-5xl px-5 py-16">
+      <h2 class="max-w-xl text-2xl font-semibold tracking-tight text-ink">{ui.home.ctaTitle}</h2>
+      <p class="mt-3 max-w-xl text-muted">{ui.home.ctaBody}</p>
+      <a
+        href={ui.paths.contact}
+        class="mt-8 inline-block bg-accent px-4 py-2 text-sm font-medium text-bg hover:bg-accent-dim"
+      >
+        {ui.home.ctaButton}
+      </a>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,38 @@
+---
+interface Props {
+  kicker: string;
+  title: string;
+  lead: string;
+  primaryHref: string;
+  primaryLabel: string;
+  secondaryHref: string;
+  secondaryLabel: string;
+}
+
+const { kicker, title, lead, primaryHref, primaryLabel, secondaryHref, secondaryLabel } = Astro.props;
+---
+
+<section class="relative overflow-hidden border-b border-line">
+  <div class="grid-bg pointer-events-none absolute inset-0"></div>
+  <div class="relative mx-auto max-w-5xl px-5 py-20 sm:py-28">
+    <p class="font-mono text-xs tracking-[0.2em] text-accent uppercase">{kicker}</p>
+    <h1 class="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+      {title}
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{lead}</p>
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a
+        href={primaryHref}
+        class="bg-accent px-4 py-2 text-sm font-medium text-bg hover:bg-accent-dim"
+      >
+        {primaryLabel}
+      </a>
+      <a
+        href={secondaryHref}
+        class="border border-line px-4 py-2 text-sm text-ink hover:border-accent"
+      >
+        {secondaryLabel}
+      </a>
+    </div>
+  </div>
+</section>

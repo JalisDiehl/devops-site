@@ -1,0 +1,12 @@
+---
+import { ui } from '../i18n/ui';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-line">
+  <div class="mx-auto flex max-w-5xl flex-col gap-2 px-5 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+    <p>{ui.footer.rights} · {year}</p>
+    <p class="font-mono text-xs">{ui.footer.built}</p>
+  </div>
+</footer>
