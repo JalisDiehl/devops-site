@@ -1,5 +1,12 @@
 {
   "name": "devops-site",
   "compatibility_date": "2026-08-19",
-  "pages_build_output_dir": "./dist"
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "jalisdiehl.dev", "custom_domain": true },
+    { "pattern": "www.jalisdiehl.dev", "custom_domain": true }
+  ]
 }
